@@ -14,25 +14,25 @@ return [
             return new HTMLRenderer('component/topPage', ["time" => $time]);
         }
         // POST method
-        else {
-            $json_data = file_get_contents('php://input');
-            // JSONデータをデコードして連想配列に変換する
-            $data = json_decode($json_data, true);
+        // else {
+        //     $json_data = file_get_contents('php://input');
+        //     // JSONデータをデコードして連想配列に変換する
+        //     $data = json_decode($json_data, true);
 
-            $highlight = $data["syntax_highlight"];
-            $title = $data["title"];
-            $validTime = $data["validTime"];
-            $content = $data["content"];
-            $publish = $data["publish"];
-            $hashedValue = hash('sha256', uniqid(mt_rand(), true));
-            $inserted = DatabaseHelper::createNewSnippetHelper($highlight, $title, $validTime, $content, $hashedValue, $publish);
+        //     $highlight = $data["syntax_highlight"];
+        //     $title = $data["title"];
+        //     $validTime = $data["validTime"];
+        //     $content = $data["content"];
+        //     $publish = $data["publish"];
+        //     $hashedValue = hash('sha256', uniqid(mt_rand(), true));
+        //     $inserted = DatabaseHelper::createNewSnippetHelper($highlight, $title, $validTime, $content, $hashedValue, $publish);
 
-            if ($inserted) {
-                return new JSONRenderer(["success" => true, "url" => "snippet/{$hashedValue}"]);
-            } else {
-                return new JSONRenderer(["success" => false]);
-            }
-        }
+        //     if ($inserted) {
+        //         return new JSONRenderer(["success" => true, "url" => "snippet/{$hashedValue}"]);
+        //     } else {
+        //         return new JSONRenderer(["success" => false]);
+        //     }
+        // }
     },
     'snippet' => function (): HTMLRenderer {
         $method = $_SERVER['REQUEST_METHOD'];

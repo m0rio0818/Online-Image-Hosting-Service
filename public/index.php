@@ -21,14 +21,10 @@ if ($urlParts[0] == "snippet"){
     $path = $urlParts[0];
 }
 
-$method = $_SERVER['REQUEST_METHOD'];
-
 // ルートにパスが存在するかチェックする
 if (isset($routes[$path])) {
     // コールバックを呼び出してrendererを作成します。
-    // $renderer = $routes[$path][$method]();
     $renderer = $routes[$path]();
-
     try {
         // ヘッダーを設定します。
         foreach ($renderer->getFields() as $name => $value) {
