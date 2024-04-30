@@ -19,7 +19,7 @@ class CreateImagesTable implements SchemaMigration
                 image TEXT NOT NULL,
                 viewd_count INT NOT NULL,
                 last_acceessed_at DATETIME NOT NULL,
-                uploaded_id_address VARCHAR(255) NOT NULL,
+                ip_address VARCHAR(255) NOT NULL,
                 created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
             )"
         ];
@@ -29,7 +29,7 @@ class CreateImagesTable implements SchemaMigration
     {
         // ロールバックロジックを追加してください
         return [
-            "DROP TABLE snippets"
+            "DROP TABLE images"
         ];
     }
 }
