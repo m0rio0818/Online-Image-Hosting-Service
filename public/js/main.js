@@ -18,8 +18,6 @@ const formSubmmit = document.getElementById("Form");
 console.log(formSubmmit);
 
 document.addEventListener("DOMContentLoaded", () => {
-    // formSubmmit.addEventListener("submit", (e) => {
-    // e.preventDefault()
     uploadImage.addEventListener("click", () => {
         if (fileInuput.files.length > 0) {
             // 公開するかどうか

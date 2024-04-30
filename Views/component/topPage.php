@@ -5,7 +5,6 @@
             <i class="fa-solid fa-gear fa-2xn  mx-1"></i>
             <h2 class="font-bold">Setting</h2>
         </div>
-        <!-- <form id="Form"> -->
         <div class="flex items-center w-full py-2 pl-10">
             <label for="file_input" class="mb-1 block text-sm font-medium text-gray-700"></label>
             <input id="file_input" type="file" accept=".jpg, .png, .gif" class="block w-full text-sm file:mr-4 file:rounded-md file:border-0 file:bg-gray-500 file:py-2.5 file:px-4 file:text-sm file:font-semibold file:text-white hover:file:bg-gray-600 focus:outline-none disabled:pointer-events-none disabled:opacity-60" />
@@ -23,7 +22,6 @@
         <div class="w-full py-2 flex justify-center">
             <button id="upload_image" type="submit" class="bg-sky-300 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded-lg">Upload Image</button>
         </div>
-        <!-- </form> -->
     </div>
     <div class="w-2/3 py-10">
         <figure id="preview_area">
