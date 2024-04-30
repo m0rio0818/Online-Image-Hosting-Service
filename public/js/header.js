@@ -1,18 +1,18 @@
 // グレー消す => 緑を加えたい
 function addHighLight(target, a_target) {
     target.classList.remove("hover:border-gray-400");
-    target.classList.add("border-green-500");
+    target.classList.add("border-blue-500");
 
     a_target.classList.remove("text-gray-500", "hover:text-black");
-    a_target.classList.add("text-green-500");
+    a_target.classList.add("text-blue-500");
 }
 
 // 緑消す => グレーを加えたい
 function removeHighlight(target, a_target) {
-    target.classList.remove("border-green-500");
+    target.classList.remove("border-blue-500");
     target.classList.add("hover:border-gray-400");
 
-    a_target.classList.remove("text-green-500");
+    a_target.classList.remove("text-blue-500");
     a_target.classList.add("text-gray-500", "hover:text-black");
 }
 
