@@ -1,4 +1,4 @@
-<div class="background pt-50 flex flex-col items-center justify-center h-full prose ">
+<div class="pt-50 flex flex-col items-center justify-center h-full prose ">
     <h1 class="text-center text-sky-500">Image Sharing</h1>
     <div class="flex flex-col items-center border-gray-300 bg-gray-100 py-4 card sm:w-1/2 w-5/6 my-4 mx-auto px-5">
         <div class="flex items-center">
@@ -28,9 +28,5 @@
             <img src="" id="figureImage">
         </figure>
     </div>
-    <div id="modal-area" class="container"></div>
-</div>
 </div>
 <script src="/js/main.js"></script>
-<style>
-</style>
