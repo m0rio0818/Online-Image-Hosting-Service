@@ -5,6 +5,6 @@
             <i class="fa-solid fa-eye"></i>
         </div>
         <p> <?php echo $data["viewed_count"] ?> views </p>
-        <img src="/js/a.png" alt="<?php $data["title"] == "" ? "undefined" : $data["title"] ?>">
+        <img src="<?php echo $data["image_url"];?>" alt="<?php $data["title"] == "" ? "undefined" : $data["title"] ?>">
     </div>
 </div>
