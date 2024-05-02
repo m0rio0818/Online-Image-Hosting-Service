@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/599ca7f9b9.js" crossorigin="anonymous"></script>
     <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="/css/output.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <header class="fixed top-0 z-10 h-16 w-full bg-white text-white">
     <div class="d-flex font-medium justify-end text-center">
