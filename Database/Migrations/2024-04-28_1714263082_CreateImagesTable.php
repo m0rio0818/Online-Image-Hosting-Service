@@ -16,6 +16,7 @@ class CreateImagesTable implements SchemaMigration
                 shared_url VARCHAR(255) NOT NULL,
                 delete_url VARCHAR(255) NOT NULL,
                 size INT NOT NULL,
+                mimeType VARCHAR(255) NOT NULL,
                 image_url TEXT NOT NULL,
                 viewed_count INT NOT NULL,
                 publish BOOLEAN NOT NULL,
