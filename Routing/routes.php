@@ -44,7 +44,7 @@ return [
             $year = $now->format("Y");
             $month = $now->format("m");
             $day = $now->format("d");
-            $root_dir = "../images";
+            $root_dir = "./images";
             $save_dirPath = $root_dir . "/" . $year . "/" . $month . "/" . $day;
             $save_fullPath = $save_dirPath . "/" . $createURL . "." . $extension;
 
