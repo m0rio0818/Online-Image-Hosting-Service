@@ -23,6 +23,18 @@ class DatabaseHelper
         return $insertSuccess;
     }
 
+    public static function increaseViewedCount(string $url): bool
+    {
+        $db = new MySQLWrapper();
+        $stmt = $db->prepare("UPDATE images SET viewed_count = viewed_count + 1, last_acceessed_at = ?  WHERE shared_url = ?");
+        $currentTime = date("Y-m-d H:m:s");
+        $stmt->bind_param('ss', $currentTime, $url);
+        $stmt->execute();
+        // 影響を受けた行の数を取得する
+        $affectedRows = $stmt->affected_rows;
+        return $affectedRows > 0;
+    }
+
     public static function getImageBySharedURL(string $url): array | string
     {
         $db = new MySQLWrapper();

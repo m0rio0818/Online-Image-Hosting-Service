@@ -87,6 +87,8 @@ return [
             if ($result == "nodata") {
                 return new HTMLRenderer('component/404', ["data" => "check the path. its not correct"]);
             }
+            // viewの更新
+            DatabaseHelper::increaseViewedCount($publicPath);
             // 回数をカウントする
             return new HTMLRenderer('component/showImage', ["data" => $result]);
         }
