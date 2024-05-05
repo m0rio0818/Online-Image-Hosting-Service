@@ -37,6 +37,51 @@ class DatabaseHelper
             return $data;
         }
     }
+    public static function getImageByDeleteURL(string $url): array | string
+    {
+        $db = new MySQLWrapper();
+        $stmt = $db->prepare("SELECT * FROM images WHERE delete_url = ?");
+        $stmt->bind_param('s', $url);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows === 0) {
+            return "nodata";
+        } else {
+            $data = $result->fetch_assoc();
+            return $data;
+        }
+    }
+
+    public static function getImagePathByDeleteURL(string $deleteURL): string
+    {
+        $db = new MySQLWrapper();
+        $stmt = $db->prepare("SELECT image_url FROM images WHERE delete_url = ?");
+        $stmt->bind_param('s', $deleteURL);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        if ($row = $result->fetch_assoc()) {
+            $imageUrl = $row['image_url'];
+        } else {
+            $imageUrl = null;
+        }
+
+        $result->close();
+        $stmt->close();
+        $db->close();
+
+        return $imageUrl;
+    }
+
+    public static function deleteDataByURL(string $url): array | string
+    {
+        $db = new MySQLWrapper();
+        $stmt = $db->prepare("DELETE FROM images WHERE delete_url = ?");
+        $stmt->bind_param('s', $url);
+        $result = $stmt->execute();
+        return $result ? true : false;
+    }
 
     public static function deleteExpiredAt(string $url): string
     {
