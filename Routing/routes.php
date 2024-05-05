@@ -27,13 +27,20 @@ return [
             $title = $jsonData["title"];
             $ip_address = $_SERVER['REMOTE_ADDR'];
             $extension = pathinfo($imageData["name"], PATHINFO_EXTENSION);
-            $createURL = hash('sha256', uniqid(mt_rand(), true));
-            $deleteURL = hash('sha256', uniqid(mt_rand(), true));
+            $createHashURL = hash('sha256', uniqid(mt_rand(), true));
+            $deleteHashURL = hash('sha256', uniqid(mt_rand(), true));
 
             // MIMEタイプを取得
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $mimeType = finfo_file($finfo, $filePath);
             finfo_close($finfo);
+
+            if (!ValidationHelper::ImageTypeValidater($mimeType)) {
+                // ImageTypeが合致っていない
+                return  new JSONRenderer(["status" => false, "message" => "ファイルtypeが正しくありません。png, jpeg, gif
+                か確認してください"]);
+            }
+            // この後、ファイルサイズ確認を行う
 
 
             // 画像保存フォルダ(日付ベースで作成 yyyy/mm/dd)がない際は作成していく。
@@ -46,21 +53,27 @@ return [
             $day = $now->format("d");
             $root_dir = "./images";
             $save_dirPath = $root_dir . "/" . $year . "/" . $month . "/" . $day;
-            $save_fullPath = $save_dirPath . "/" . $createURL . "." . $extension;
+            $save_fullPath = $save_dirPath . "/" . $createHashURL . "." . $extension;
 
             if (!is_dir($save_dirPath)) {
                 mkdir($save_dirPath, 0777, true);
             }
 
+            // URLのroot確認
+            $urlMediaType = ValidationHelper::ImageTypeValidater($mimeType);
+            $createdFullURL = $urlMediaType . "/" . $createHashURL;
+            $deleteFullURL = "delete/" . $deleteHashURL;
+
+
             if (!move_uploaded_file($imageData["tmp_name"], $save_fullPath)) {
-                return new JSONRenderer(["status" => false, "ファイルの作成に失敗しました. 再度作成お願いします"]);
+                return new JSONRenderer(["status" => false, "message" => "ファイルの作成に失敗しました. 再度作成お願いします"]);
             } else {
-                $inserted = DatabaseHelper::createNewImage($title, $createURL, $deleteURL, $fileSize, $mimeType,  $save_fullPath, 0, $publish, $ip_address);
-                return new JSONRenderer(["status" => $inserted, "create_url" => "image/" . $createURL, "delete_url" => "delete/" . $deleteURL]);
+                $inserted = DatabaseHelper::createNewImage($title, $createHashURL, $deleteHashURL, $fileSize, $mimeType,  $save_fullPath, 0, $publish, $ip_address);
+                return new JSONRenderer(["status" => $inserted, "create_url" => $createdFullURL, "delete_url" => $deleteFullURL]);
             }
         }
     },
-    'image' => function (): HTMLRenderer  | JSONRenderer {
+    'getImage' => function (): HTMLRenderer  | JSONRenderer {
         $method = $_SERVER['REQUEST_METHOD'];
         if ($method == "GET") {
             $currentUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
