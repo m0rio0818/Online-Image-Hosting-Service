@@ -16,28 +16,23 @@ class ValidationHelper
         return $value;
     }
 
-    public static function getSyntaxHighlight(): array
+    public static function ImageTypeValidater($mime): string
     {
-        $syntaxValid = [
-            'plaintext'       => 'plaintext',
-            'html'       => 'HTML',
-            'css'        => 'CSS',
-            'javascript' => 'JavaScript',
-            'json'       => 'JSON',
-            'typescript' => 'TypeScript',
-            'python'     => 'Python',
-            'java'       => 'Java',
-            'c#'         => 'C#',
-            'c++'        => 'C++',
-            'php'        => 'PHP',
-            'ruby'       => 'Ruby',
-            'go'         => 'Go',
-            'markdown'   => 'Markdown',
-            'sql'        => 'SQL',
-            'xml'        => 'XML',
-            'yaml'       => "yaml"
+        $imageType = [
+            'image/png' => 'png',
+            'image/jpeg' => 'jpeg',
+            'image/gif' => 'gif'
         ];
-        return $syntaxValid;
+        return $imageType[$mime];
+    }
+
+    public static function getImageURL(string $mime): bool
+    {
+        $imageType = [
+            'image/png', 'image/jpeg', 'image/gif'
+        ];
+
+        return in_array($mime, $imageType);
     }
 
 

@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Text Snipetter</title>
-    <script src="https://kit.fontawesome.com/599ca7f9b9.js" crossorigin="anonymous"></script>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/output.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -19,11 +18,12 @@
                 </a>
             </li>
             <li id="snippet_List" value="off" class="me-2 border-b-2 hover:border-gray-400">
-                <a href="/snippet_List" class="active inline-block p-4 rounded-t-lg text-gray-500 hover:text-black hover:border-gray-300" style="text-decoration:none;">
+                <a href="/publicImages" class="active inline-block p-4 rounded-t-lg text-gray-500 hover:text-black hover:border-gray-300" style="text-decoration:none;">
                     Image List
                 </a>
             </li>
         </ul>
+        
     </div>
 </header>
 
