@@ -107,17 +107,16 @@ class DatabaseHelper
     }
 
 
-    public static function getAllSnipetter(): array | string
+    public static function getPublicImages(): array | string
     {
         $db = new MySQLWrapper();
-        $stmt = $db->prepare("SELECT * FROM images WHERE publish = 1 AND (expire_at > NOW() OR expire_at IS NULL)");
+        $stmt = $db->prepare("SELECT * FROM images WHERE publish = 1");
         $stmt->execute();
         $ans = [];
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
             $ans[] = $row;
         }
-
         if (!$ans) {
             return "nodata";
         }

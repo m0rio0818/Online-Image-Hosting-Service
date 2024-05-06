@@ -129,4 +129,11 @@ return [
             }
         }
     },
+    "publicImages" => function (): HTMLRenderer {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method == "GET") {
+            $reuslt = DatabaseHelper::getPublicImages();
+            return new HTMLRenderer('component/publicImageList', ["data" => $reuslt]);
+        }
+    }
 ];

@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li id="snippet_List" value="off" class="me-2 border-b-2 hover:border-gray-400">
-                <a href="/snippet_List" class="active inline-block p-4 rounded-t-lg text-gray-500 hover:text-black hover:border-gray-300" style="text-decoration:none;">
+                <a href="/publicImages" class="active inline-block p-4 rounded-t-lg text-gray-500 hover:text-black hover:border-gray-300" style="text-decoration:none;">
                     Image List
                 </a>
             </li>
