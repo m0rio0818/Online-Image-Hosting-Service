@@ -17,8 +17,6 @@ return [
         // POST method
         else {
             $imageData = $_FILES['image'];
-            // echo $_FILES["image"]["error"];
-            // var_dump($imageData);
             $filePath = $imageData['tmp_name'];
             $jsonData = json_decode($_POST['data'], true);
             $fileSize = $imageData["size"];
@@ -35,18 +33,14 @@ return [
             }
 
             $uploadedByDay = DatabaseHelper::getDayNumUploadedVideos($ip_address);
-            if ($uploadedByDay > 5){
+            if ($uploadedByDay > 5) {
                 return new JSONRenderer(["status" => "alert", "message" => "1日5つの画像までしかアップロードできません。"]);
             }
-            
+
             $uploadCapacity = DatabaseHelper::getTotalUploadCapacity($ip_address);
             if (ValidationHelper::checkFileSize($uploadCapacity)) {
                 return new JSONRenderer(["status" => "alert", "message" => "1日のアップファイル容量は5MBまでです。"]);
             }
-            
-            echo $uploadCapacity;
-
-
 
             // MIMEタイプを取得
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -54,16 +48,11 @@ return [
             finfo_close($finfo);
 
             if (!ValidationHelper::ImageTypeValidater($mimeType)) {
-                // ImageTypeが合致っていない
                 return new JSONRenderer(["status" => false, "message" => "ファイルtypeが正しくありません。png, jpeg, gif
                 か確認してください"]);
             }
-            // この後、ファイルサイズ確認を行う
-            // ip_addressの1日のアップロード容量5MB, 一度の最大容量5MB, 1日最大5ファイルまで
 
-
-
-            // 画像保存フォルダ(日付ベースで作成 yyyy/mm/dd)がない際は作成していく。
+            // 画像保存フォルダ(日付ベースで作成 yyyy/mm/dd)がない際は作成
             $timeZone = new DateTimeZone('Asia/Tokyo');
             $now = new DateTime();
             $now->setTimezone($timeZone);
@@ -83,7 +72,6 @@ return [
             $urlMediaType = ValidationHelper::ImageTypeValidater($mimeType);
             $createdFullURL = $urlMediaType . "/" . $createHashURL;
             $deleteFullURL = "delete/" . $deleteHashURL;
-
 
             if (!move_uploaded_file($imageData["tmp_name"], $save_fullPath)) {
                 return new JSONRenderer(["status" => false, "message" => "ファイルの作成に失敗しました. 再度作成お願いします"]);
