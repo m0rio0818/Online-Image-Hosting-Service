@@ -1,40 +1,40 @@
-// グレー消す => 緑を加えたい
+// グレー消す => 青を加えたい
 function addHighLight(target, a_target) {
     target.classList.remove("hover:border-gray-400");
-    target.classList.add("border-blue-500");
+    target.classList.add("border-sky-500");
 
     a_target.classList.remove("text-gray-500", "hover:text-black");
-    a_target.classList.add("text-blue-500");
+    a_target.classList.add("text-sky-500");
 }
 
-// 緑消す => グレーを加えたい
+// 青消す => グレーを加えたい
 function removeHighlight(target, a_target) {
-    target.classList.remove("border-blue-500");
+    target.classList.remove("border-sky-500");
     target.classList.add("hover:border-gray-400");
 
-    a_target.classList.remove("text-blue-500");
+    a_target.classList.remove("text-sky-500");
     a_target.classList.add("text-gray-500", "hover:text-black");
 }
 
 
 function checkHeader() {
     const currentUrl = window.location.href;
-    const createSnippet = document.getElementById("create_Snippet");
-    const a_createSnippet = document.getElementById("create_Snippet").querySelector("a");
-    const snippetList = document.getElementById("snippet_List");
-    const a_snippetList = document.getElementById("snippet_List").querySelector("a");;
+    const uploadImage = document.getElementById("uploadImage");
+    const a_uploadImage = uploadImage.querySelector("a");
+    const imageList = document.getElementById("imageList");
+    const a_imageList = imageList.querySelector("a");;
 
-    if (currentUrl.includes("snippet/")) {
-        removeHighlight(createSnippet, a_createSnippet);
-        removeHighlight(snippetList, a_snippetList);
-    } else if (currentUrl.includes("snippet_List")) {
-        removeHighlight(createSnippet, a_createSnippet);
-        removeHighlight(snippetList, a_snippetList);
-        addHighLight(snippetList, a_snippetList);
+    if (currentUrl.includes("publicImages")) {
+        removeHighlight(uploadImage, a_uploadImage);
+        removeHighlight(imageList, a_imageList);
+        addHighLight(imageList, a_imageList);
+    } else if (currentUrl.includes("jpeg") || currentUrl.includes("png") || currentUrl.includes("gif") || currentUrl.includes("delete")) {
+        removeHighlight(uploadImage, a_uploadImage);
+        removeHighlight(imageList, a_imageList);
     } else {
-        removeHighlight(createSnippet, a_createSnippet);
-        removeHighlight(snippetList, a_snippetList);
-        addHighLight(createSnippet, a_createSnippet);
+        removeHighlight(uploadImage, a_uploadImage);
+        removeHighlight(imageList, a_imageList);
+        addHighLight(uploadImage, a_uploadImage);
     }
 }
 

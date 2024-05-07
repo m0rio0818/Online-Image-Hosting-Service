@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 h1 {
     font-size: 2em;
     font-weight: bold;
@@ -40,6 +39,6 @@ h6 {
 }
 
 a {
-    color: blue;
+    color: rgb(27, 147, 203);
     text-decoration: underline;
 }
