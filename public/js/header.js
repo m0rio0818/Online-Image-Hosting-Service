@@ -1,4 +1,4 @@
-// グレー消す => 緑を加えたい
+// グレー消す => 青を加えたい
 function addHighLight(target, a_target) {
     target.classList.remove("hover:border-gray-400");
     target.classList.add("border-sky-500");
@@ -7,7 +7,7 @@ function addHighLight(target, a_target) {
     a_target.classList.add("text-sky-500");
 }
 
-// 緑消す => グレーを加えたい
+// 青消す => グレーを加えたい
 function removeHighlight(target, a_target) {
     target.classList.remove("border-sky-500");
     target.classList.add("hover:border-gray-400");
@@ -19,22 +19,22 @@ function removeHighlight(target, a_target) {
 
 function checkHeader() {
     const currentUrl = window.location.href;
-    const createSnippet = document.getElementById("uploadImage");
-    const a_createSnippet = createSnippet.querySelector("a");
-    const snippetList = document.getElementById("imageList");
-    const a_snippetList = snippetList.querySelector("a");;
+    const uploadImage = document.getElementById("uploadImage");
+    const a_uploadImage = uploadImage.querySelector("a");
+    const imageList = document.getElementById("imageList");
+    const a_imageList = imageList.querySelector("a");;
 
-    if (currentUrl.includes("snippet/")) {
-        removeHighlight(createSnippet, a_createSnippet);
-        removeHighlight(snippetList, a_snippetList);
-    } else if (currentUrl.includes("snippet_List")) {
-        removeHighlight(createSnippet, a_createSnippet);
-        removeHighlight(snippetList, a_snippetList);
-        addHighLight(snippetList, a_snippetList);
+    if (currentUrl.includes("publicImages")) {
+        removeHighlight(uploadImage, a_uploadImage);
+        removeHighlight(imageList, a_imageList);
+        addHighLight(imageList, a_imageList);
+    } else if (currentUrl.includes("jpeg") || currentUrl.includes("png") || currentUrl.includes("gif") || currentUrl.includes("delete")) {
+        removeHighlight(uploadImage, a_uploadImage);
+        removeHighlight(imageList, a_imageList);
     } else {
-        removeHighlight(createSnippet, a_createSnippet);
-        removeHighlight(snippetList, a_snippetList);
-        addHighLight(createSnippet, a_createSnippet);
+        removeHighlight(uploadImage, a_uploadImage);
+        removeHighlight(imageList, a_imageList);
+        addHighLight(uploadImage, a_uploadImage);
     }
 }
 
