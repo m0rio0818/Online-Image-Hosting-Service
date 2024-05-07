@@ -106,41 +106,6 @@ class DatabaseHelper
         return "failed";
     }
 
-    public static function getTotalUploadCapacity(string $ipAddress): int
-    {
-        $db = new MySQLWrapper();
-        $stmt = $db->prepare("SELECT SUM(size) AS total_size FROM images WHERE ip_address = ? AND DATE(created_at) = CURDATE()");
-        $stmt->bind_param('s', $ipAddress);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $count = 0;
-
-        if ($result && $row = $result->fetch_assoc()) {
-            $count = (int) $row['total_size'];
-        }
-        $error = $stmt->error;
-        if ($error) {
-            echo "Error: " . $error;
-        }
-        $stmt->close();
-        return $count;
-    }
-
-    public static function getDayNumUploadedVideos(string $ipAddress): int
-    {
-        $db = new MySQLWrapper();
-        $stmt = $db->prepare("SELECT COUNT(*) FROM images WHERE ip_address = ? AND DATE(created_at) = CURDATE()");
-        $stmt->bind_param('s', $ipAddress);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $count = 0;
-        if ($result && $row = $result->fetch_assoc()) {
-            $count = (int) $row['total_size'];
-        }
-        $stmt->close();
-        return $count;
-    }
-
 
     public static function getPublicImages(): array | string
     {

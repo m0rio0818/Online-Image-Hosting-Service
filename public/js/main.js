@@ -49,10 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     return response.json();
                 })
                 .then(data => {
-                    if (data["status"] == "alert") {
-                        window.alert(data["message"])
-                    }
-                    else if (data["status"]) {
+                    if (data["status"]) {
                         const modalArea = document.getElementById("modal-area");
                         modalArea.classList.add("overlay", "fixed", "top-0", "left-0", "w-full", "h-screen", "flex", "items-center", "justify-center", "bg-opacity-90", "bg-gray-300")
                         modalArea.innerHTML = `
@@ -80,16 +77,18 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                         </div>
                         `
-                        const closeBtn = document.getElementById("close-btn");
-                        closeBtn.addEventListener("click", () => {
-                            window.location.href = "/";
-                        })
                     }
 
+                    const closeBtn = document.getElementById("close-btn");
+                    closeBtn.addEventListener("click", () => {
+                        window.location.href = "/";
+                    })
                 })
             // .catch(error => {
             //     console.error('Error:', error);
             // });
+
+
         } else {
             window.alert("ファイルを選択してください");
         }
