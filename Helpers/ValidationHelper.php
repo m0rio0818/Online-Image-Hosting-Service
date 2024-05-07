@@ -35,32 +35,9 @@ class ValidationHelper
         return in_array($mime, $imageType);
     }
 
-
-    public static function getExpiretionKeyValue(): array
+    public static function checkFileSize(int $fileSize): bool
     {
-        $timeValid = [
-            "Never" => "never",
-            "10 Min" => "10min",
-            "1 Hour" => "1hour",
-            "1 Day" => "1day",
-            "1 Week" => "1week",
-            "1 Month" => "1month",
-            "1 Year" => "1year"
-        ];
-        return $timeValid;
-    }
-
-    public static function getExpirationTime(): array
-    {
-        $timeValid = [
-            "never" => null,
-            "10min" => "PT10M",
-            "1hour" => "PT1H",
-            "1day" => "PT1D",
-            "1week" => "P1W",
-            "1month" => "PT1M",
-            "1year" => "PT1Y"
-        ];
-        return $timeValid;
+        $fileSizeMB = $fileSize / (1024 * 1024);
+        return $fileSizeMB >= 5;
     }
 }
