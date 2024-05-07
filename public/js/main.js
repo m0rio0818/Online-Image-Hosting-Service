@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     else if (data["status"]) {
                         const modalArea = document.getElementById("modal-area");
                         modalArea.innerHTML = `
-                            <dialog class="p-3">
+                            <dialog class="p-3 scale-in-top">
                                 <div class="relative flex items-center flex-col justify-center w-full bg-white py-20">
                                     <div class="absolute top-0 right-1">
                                         <i id="close-btn" class="fa-solid fa-rectangle-xmark hover:text-red-500"></i>
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     <div class="my-4">
                                         <i class="fa-regular fa-circle-check fa-7x text-green-500"></i>
                                     </div>
-                                    <h4 class="text-4xl py-1 font-bold">Image Uploaded!</h4>
+                                    <h4 class="text-4xl py-1 font-bold ">Image Uploaded!</h4>
                                     <div class="flex justify-center mx-auto py-2">
                                         <p class="truncate text-center"><i class="px-1 fa-solid fa-upload"></i> Public URL : <br> 
                                         <a href=${data["create_url"]} class=" text-sky-400 hover:text-sky-600 hover:underline"> ${data["create_url"]}</a>

@@ -28,7 +28,7 @@
             <img src="" id="figureImage">
         </figure>
     </div>
-    <div id="modal-area" class="container"></div>
+    <div id="modal-area" class=""></div>
 </div>
 </div>
 <script src="/js/main.js"></script>
