@@ -8,9 +8,6 @@ $DEBUG = true;
 if (preg_match('/\.(?:png|jpg|jpeg|gif|js|css|html)$/', $_SERVER["REQUEST_URI"])) {
     return false;
 }
-if (preg_match('/\/images\/\d{4}\/\d{2}\/\d{2}\/\w+\.png$/', $_SERVER["REQUEST_URI"])) {
-    return false;    // リクエストされたリソースをそのままの形式で扱います。
-}
 
 // ルートを読み込みます。
 $routes = include('Routing/routes.php');
@@ -19,7 +16,7 @@ $routes = include('Routing/routes.php');
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $path = ltrim($path, '/');
 $urlParts = explode("/", $path);
-
+// var_dump($urlParts);
 if ($urlParts[0] == "delete") {
     $path = $urlParts[0];
 }

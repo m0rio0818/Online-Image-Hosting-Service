@@ -1,15 +1,23 @@
-<div>
-    <div class="flex flex-col justify-center">
+    <?php
+
+    use Helpers\ValidationHelper;
+    ?>
+    <div class="p-40">
+        <?php
+        // var_dump($data);
+        $urlMediaType = ValidationHelper::ImageTypeValidater($data["mimeType"]);
+        $hashURL = $data["shared_url"];
+        $createdFullURL = $urlMediaType . "/" . $hashURL;
+        ?>
         <div class="flex items-center pr-3">
-            <i class="fa-solid fa-trash"></i>
+            <p class="text-center"><a href=<?php echo "../" . $createdFullURL ?> class="text-sky-400 hover:text-sky-600 hover:underline"><?php echo $createdFullURL ?></a> <br>のデータを削除しますがよろしいでしょうか？</p>
         </div>
-        <?php var_dump($data) ?>
-        <div class="mx-auto">
-            <button id="delete_btn" class="py-2 px-7 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-full">
+        <div class="flex justify-center py-20">
+            <button id="delete_btn" class="py-2 px-6 bg-sky-500 hover:bg-sky-700 text-white font-bold rounded-xl">
                 DELETE
             </button>
         </div>
+        <div id="confirm_dialog"></div>
     </div>
-</div>
 
-<script src="/js/delete.js"></script>
+    <script src="/js/delete.js"></script>

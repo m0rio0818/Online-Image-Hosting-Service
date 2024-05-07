@@ -135,7 +135,7 @@ class DatabaseHelper
         $result = $stmt->get_result();
         $count = 0;
         if ($result && $row = $result->fetch_assoc()) {
-            $count = (int) $row['total_size'];
+            $count = (int) $row['COUNT(*)'];
         }
         $stmt->close();
         return $count;

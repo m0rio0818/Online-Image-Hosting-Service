@@ -1,11 +1,3 @@
-/* 背景要素 */
-.background {
-    position: relative;
-    /* 相対位置指定 */
-}
-
-/* 上に重なるコンテンツ要素 */
-.overlay {
-    position: absolute;
-    z-index: 10;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
