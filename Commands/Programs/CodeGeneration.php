@@ -27,6 +27,9 @@ class CodeGeneration extends AbstractCommand
         if ($codeGenType === 'migration') {
             $migrationName = $this->getArgumentValue('name');
             $this->generateMigrationFile($migrationName);
+        } elseif ($codeGenType === 'seeder') {
+            $className = $this->getArgumentValue('name');
+            $this->generateSeederFile($className);
         }
 
         return 0;
@@ -44,7 +47,7 @@ class CodeGeneration extends AbstractCommand
         $migrationContent = $this->getMigrationContent($migrationName);
 
         // 移行ファイルを保存するパスを指定します
-        $path = sprintf("%s/../../Database/Migrations/%s", __DIR__, $filename);
+        $path = sprintf("%s/../../Database/migrations/%s", __DIR__, $filename);
 
         file_put_contents($path, $migrationContent);
         $this->log("Migration file {$filename} has been generated!");
@@ -81,5 +84,47 @@ MIGRATION;
     private function pascalCase(string $string): string
     {
         return str_replace(' ', '', ucwords(str_replace('_', ' ', $string)));
+    }
+
+    private function generateSeederFile(string $className): void
+    {
+        $className = $this->pascalCase($className);
+        $className = preg_match('/.+Seeder/', $className) ? $className : $className . 'Seeder';
+        $filename = $className . '.php';
+
+        $seederContent = $this->getSeedContent($className);
+
+        $path = sprintf("%s/../../Database/Seeds/%s", __DIR__, $filename);
+
+        file_put_contents($path, $seederContent);
+        $this->log("Seeder file {$className} has been generated!");
+    }
+
+    private function getSeedContent(string $className): string
+    {
+
+
+        return sprintf(<<<'EOD'
+        <?php
+
+        namespace Database\Seeds;
+
+        use Database\AbstractSeeder;
+
+        class %s extends AbstractSeeder {
+
+            // TODO: tableName文字列を割り当ててください。
+            protected ?string $tableName = null;
+
+            // TODO: tableColumns配列を割り当ててください。
+            protected array $tableColumns = [];
+
+            public function createRowData(): array
+            {
+                // TODO: createRowData()メソッドを実装してください。
+                return [];
+            }
+        }
+        EOD, $className);
     }
 }

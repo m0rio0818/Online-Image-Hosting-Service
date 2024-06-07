@@ -141,6 +141,37 @@ class DatabaseHelper
         return $count;
     }
 
+    public static function getInActicein30days(): array
+    {
+        $mysqli = new MySQLWrapper();
+        $deleteThreshold = date('Y-m-d H:i:s', strtotime('-30 day'));
+        $stmt = $mysqli->prepare("SELECT path FROM images WHERE last_acceessed_at < ?");
+        $stmt->bind_param('s', $deleteThreshold);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $data = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row['path'];
+        }
+        return $data;
+    }
+
+    public static function deleteInActicein30days(): void
+    {
+        $mysqli = new MySQLWrapper();
+        $deleteThreshold = date('Y-m-d H:i:s', strtotime('-30 day'));
+        $stmt = $mysqli->prepare("DELETE FROM images WHERE last_acceessed_at < ?");
+        $stmt->bind_param('s', $deleteThreshold);
+        $stmt->execute();
+
+        if ($stmt->errno) {
+            $errorMessage = "Error: {$stmt->error}";
+            error_log($errorMessage);
+        }
+    }
+
 
     public static function getPublicImages(): array | string
     {
