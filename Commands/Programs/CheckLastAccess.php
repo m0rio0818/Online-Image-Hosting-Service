@@ -43,7 +43,6 @@ class CheckLastAccess extends AbstractCommand
                 unlink($currentData);
                 $this->log("Delete "  . $currentData);
             }
-            
             $this->log("Access check complete.");
         }
     }
