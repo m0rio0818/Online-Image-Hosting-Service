@@ -141,7 +141,7 @@ class DatabaseHelper
         return $count;
     }
 
-    public static function getInActicein30days(): array
+    public static function getInActivein30days(): array
     {
         $mysqli = new MySQLWrapper();
         $deleteThreshold = date('Y-m-d H:i:s', strtotime('-30 day'));
@@ -158,7 +158,7 @@ class DatabaseHelper
         return $data;
     }
 
-    public static function deleteInActicein30days(): void
+    public static function deleteInActivein30days(): void
     {
         $mysqli = new MySQLWrapper();
         $deleteThreshold = date('Y-m-d H:i:s', strtotime('-30 day'));
@@ -171,7 +171,6 @@ class DatabaseHelper
             error_log($errorMessage);
         }
     }
-
 
     public static function getPublicImages(): array | string
     {

@@ -17,8 +17,6 @@ return [
         // POST method
         else {
             $imageData = $_FILES['image'];
-            // echo $_FILES["image"]["error"];
-            // var_dump($imageData);
             $filePath = $imageData['tmp_name'];
             $jsonData = json_decode($_POST['data'], true);
             $fileSize = $imageData["size"];

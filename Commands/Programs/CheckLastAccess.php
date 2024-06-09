@@ -28,7 +28,7 @@ class CheckLastAccess extends AbstractCommand
     public function accessCheck(): void
     {
         date_default_timezone_set('Asia/Tokyo');
-        $oldData = DatabaseHelper::getInActicein30days();
+        $oldData = DatabaseHelper::getInActivein30days();
 
 
         $uploadImage = __DIR__ . "../../public/images";
@@ -36,10 +36,11 @@ class CheckLastAccess extends AbstractCommand
         if (empty($oldData)) {
             $this->log("No data last in 30 days");
         } else {
-            DatabaseHelper::deleteInActicein30days();
+            DatabaseHelper::deleteInActivein30days();
 
             foreach ($oldData as $file) {
                 $currentData = $uploadImage . $file;
+                echo $currentData;
                 unlink($currentData);
                 $this->log("Delete "  . $currentData);
             }
