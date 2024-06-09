@@ -34,7 +34,7 @@ class CheckLastAccess extends AbstractCommand
         $uploadImage = __DIR__ . "/../../public/";
 
         if (empty($oldData)) {
-            $this->log("No data last in 30 days");
+            $this->log('No data exceeds 30 days.');
         } else {
             DatabaseHelper::deleteInActivein30days();
 

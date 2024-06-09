@@ -6,7 +6,7 @@ echo date("Y-m-d H:i:s" . "\n");
 
 $output = [];
 // DailyAccessCheckコマンドを実行する
-$result = exec("php console dac", $output);
+$result = exec("php console checkLastAccess", $output);
 
 // 不要な1行目を削除
 array_shift($output);
