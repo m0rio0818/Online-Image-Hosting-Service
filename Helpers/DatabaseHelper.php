@@ -145,7 +145,7 @@ class DatabaseHelper
     {
         $mysqli = new MySQLWrapper();
         $deleteThreshold = date('Y-m-d H:i:s', strtotime('-30 day'));
-        $stmt = $mysqli->prepare("SELECT path FROM images WHERE last_acceessed_at < ?");
+        $stmt = $mysqli->prepare("SELECT image_url FROM images WHERE last_acceessed_at < ?");
         $stmt->bind_param('s', $deleteThreshold);
         $stmt->execute();
 
@@ -153,7 +153,7 @@ class DatabaseHelper
         $data = [];
 
         while ($row = $result->fetch_assoc()) {
-            $data[] = $row['path'];
+            $data[] = $row['image_url'];
         }
         return $data;
     }

@@ -30,19 +30,19 @@ return [
             $deleteHashURL = hash('sha256', uniqid(mt_rand(), true));
 
             // サイズをMBに変換しチェック
-            // if (ValidationHelper::checkFileSize($fileSize)) {
-            //     return new JSONRenderer(["status" => "alert", "message" => "ファイル容量が5MBより大きい画像はアップロードできません。"]);
-            // }
+            if (ValidationHelper::checkFileSize($fileSize)) {
+                return new JSONRenderer(["status" => "alert", "message" => "ファイル容量が5MBより大きい画像はアップロードできません。"]);
+            }
 
-            // $uploadedByDay = DatabaseHelper::getDayNumUploadedVideos($ip_address);
-            // if ($uploadedByDay > 5){
-            //     return new JSONRenderer(["status" => "alert", "message" => "1日5つの画像までしかアップロードできません。"]);
-            // }
+            $uploadedByDay = DatabaseHelper::getDayNumUploadedVideos($ip_address);
+            if ($uploadedByDay > 5){
+                return new JSONRenderer(["status" => "alert", "message" => "1日5つの画像までしかアップロードできません。"]);
+            }
             
-            // $uploadCapacity = DatabaseHelper::getTotalUploadCapacity($ip_address);
-            // if (ValidationHelper::checkFileSize($uploadCapacity)) {
-            //     return new JSONRenderer(["status" => "alert", "message" => "1日のアップファイル容量は5MBまでです。"]);
-            // }
+            $uploadCapacity = DatabaseHelper::getTotalUploadCapacity($ip_address);
+            if (ValidationHelper::checkFileSize($uploadCapacity)) {
+                return new JSONRenderer(["status" => "alert", "message" => "1日のアップファイル容量は5MBまでです。"]);
+            }
             
             // MIMEタイプを取得
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
