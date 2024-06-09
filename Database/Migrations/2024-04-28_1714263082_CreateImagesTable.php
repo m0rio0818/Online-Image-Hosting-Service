@@ -11,7 +11,8 @@ class CreateImagesTable implements SchemaMigration
         // マイグレーションロジックをここに追加してください
         return [
             "CREATE TABLE images(
-                id INT PRIMARY KEY AUTO_INCREMENT,
+                id INT PRIMA
+                RY KEY AUTO_INCREMENT,
                 title VARCHAR(255),
                 shared_url VARCHAR(255) NOT NULL,
                 delete_url VARCHAR(255) NOT NULL,
