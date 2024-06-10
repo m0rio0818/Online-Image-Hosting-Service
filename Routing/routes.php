@@ -93,7 +93,7 @@ return [
                 return new HTMLRenderer('component/404', ["data" => "URL does not correct. need hashstring.<br> image/{hashstring}"]);
             }
             $publicPath = $urlParts[2];
-            $result = DatabaseHelper::getImageBySharedURL($publicPath, "public");
+            $result = DatabaseHelper::getImageBySharedURL($publicPath);
             if ($result == "nodata") {
                 return new HTMLRenderer('component/404', ["data" => "check the path. its not correct"]);
             }

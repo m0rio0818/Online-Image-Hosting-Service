@@ -18,7 +18,6 @@ $routes = include('Routing/routes.php');
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $path = ltrim($path, '/');
 $urlParts = explode("/", $path);
-// var_dump($urlParts);
 if ($urlParts[0] == "delete") {
     $path = $urlParts[0];
 }

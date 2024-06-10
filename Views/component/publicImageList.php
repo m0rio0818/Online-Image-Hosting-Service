@@ -2,7 +2,9 @@
     <?php
     if ($data == "nodata") {
     ?>
-        <h1>No public Data</h1>
+        <div class="py-10">
+            <h1 class="text-center"> No public Data</h1>
+        </div>
     <?php
     } else { ?>
         <div id="public_images" class="flex justify-center flex-wrap">

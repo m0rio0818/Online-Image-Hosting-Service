@@ -14,7 +14,6 @@ fileInuput.addEventListener("change", (e) => {
 })
 
 const formSubmmit = document.getElementById("Form");
-console.log(formSubmmit);
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -25,8 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
             // title
             const title = document.getElementById("title");
             const imageFile = fileInuput.files[0];
-            console.log(publish.checked);
-            console.log(title.value);
 
             const jsonData = {
                 publish: publish.checked,
