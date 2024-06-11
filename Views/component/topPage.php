@@ -23,7 +23,7 @@
             <button id="upload_image" type="submit" class="bg-sky-300 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded-lg">Upload Image</button>
         </div>
     </div>
-    <div class="w-2/3 py-10 flex justify-center items-center">
+    <div class="md:2/3 w-1/4 py-10 flex justify-center items-center">
         <figure id="preview_area ">
             <img src="" id="figureImage">
         </figure>
