@@ -1,5 +1,5 @@
 <div class="background pt-50 flex flex-col items-center justify-center h-full prose ">
-    <h1 class="text-center text-sky-500 text-3xl">Image Sharing</h1>
+    <h1 class="text-center text-sky-500 text-bold text-3xl">PicShare</h1>
     <div class="flex flex-col items-center border-gray-300 bg-gray-100 py-4 card sm:w-1/2 w-5/6 my-4 mx-auto px-5">
         <div class="flex items-center">
             <i class="fa-solid fa-gear fa-2xn  mx-1"></i>
