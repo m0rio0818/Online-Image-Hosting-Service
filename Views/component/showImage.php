@@ -12,7 +12,7 @@
             </div>
             <p> <?php echo $data["viewed_count"] ?> views </p>
         </div>
-        <div class="mx-auto w-1/2">
+        <div class="flex justify-center pt-3 mx-auto w-1/2">
             <img src="<?php echo substr($data["image_url"], 1); ?>" alt="<?php $data["title"] == "" ? "undefined" : $data["title"] ?>">
         </div>
     </div>
