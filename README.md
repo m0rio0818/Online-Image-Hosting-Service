@@ -5,8 +5,7 @@
 https://pic-share.nakatani.blog/
 
 ## Demo
-![PicShare_Dem](https://github.com/m0rio0818/Online-Image-Hosting-Service/assets/72071848/ddcecd7f-4727-4661-86da-616088070c7f)
-
+![demo](https://github.com/m0rio0818/Online-Image-Hosting-Service/assets/72071848/91343df7-53d8-4570-bffd-5e6007e85655)
 
 ## 概要
 PicShareは、ユーザーアカウント不要の画像共有サービスです。  
